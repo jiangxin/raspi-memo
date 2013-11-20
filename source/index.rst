@@ -14,6 +14,7 @@ Raspberry Pi memo
    :glob:
 
    raspi-and-peripherals
+   raspbian
 
 索引和表格
 ==================
