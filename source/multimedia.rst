@@ -50,3 +50,43 @@ fbi
 * H：显示帮助信息
 * A：自动缩放
 * PageUp/PageDown：前一张/下一张图片
+
+XBMC
+-------------------
+
+XBMC是一个开源的家庭多媒体中心平台。树莓派有两个以XBMC为核心的操作系统发行版：RaspBMC和OpenELEC。
+
+在Raspbian中的XBMC软件包直接来自于Debian，不但版本老，而且安装会由于软件包版本冲突导致失败，可以使用第三方编译的Debian包。\
+方法如下：
+
+1. 添加新的APT源：
+
+  ::
+
+    # cat > /etc/apt/sources.list.d/xbmc.list <<EOF
+    deb http://archive.mene.za.net/raspbian wheezy contrib
+    EOF
+
+2. 添加新的开发者公钥到APT公钥链中。
+
+   ::
+
+     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 5243CDED
+
+3. 更新APT源。
+
+   ::
+
+     $ sudo aptitude update
+
+4. 安装xbmc。
+
+   ::
+
+     $ sudo aptitude install xbmc
+
+XBMC是独立于X Window的应用，在控制台下执行如下命令启动XBMC：
+
+::
+
+  $ xbmc-standalone
