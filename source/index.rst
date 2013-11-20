@@ -15,6 +15,7 @@ Raspberry Pi memo
 
    raspi-and-peripherals
    raspbian
+   hardware
    multimedia
 
 索引和表格

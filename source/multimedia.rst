@@ -90,3 +90,9 @@ XBMC是独立于X Window的应用，在控制台下执行如下命令启动XBMC�
 ::
 
   $ xbmc-standalone
+
+Wayland: future desktop
+--------------------------
+
+当前树莓派的桌面还是基于X.org，没有很好地利用GPU，性能不高，也不支持桌面特效。\
+Wayland是被寄予希望的下一代桌面引擎，将会取代X.org。
