@@ -12,7 +12,7 @@
 
 如果设置为固定IP，可参照帮助：
 
-::
+.. code-block:: sh
 
   $ man interfaces
 
@@ -22,13 +22,13 @@
 
 用\ ``dmesg``\ 诊断：
 
-::
+.. code-block:: sh
 
   $ dmesg | grep usb
 
 查看USB设备中的无线网卡：
 
-::
+.. code-block:: sh
 
   $ lsusb
   Bus 001 Device 007: ID 0bda:8178 Realtek Semiconductor Corp. RTL8192CU 802.11n WLAN Adapter
@@ -36,13 +36,13 @@
 
 安装无线网卡相应的firmeware。
 
-::
+.. code-block:: sh
 
   $ sudo aptitude install firmware-realtek
 
 无线网卡正确驱动后，执行下面命令扫描可用的无线网络：
 
-::
+.. code-block:: sh
 
   $ iwlist scan | less
 
@@ -124,7 +124,7 @@
 
 启动无线网：
 
-::
+.. code-block:: sh
 
   $ sudo ifdown wlan0
   $ sudo ifup wlan0
@@ -132,13 +132,13 @@
 
 查看无线网卡：
 
-::
+.. code-block:: sh
 
   $ sudo iwconfig
 
 查看无线网卡IP：
 
-::
+.. code-block:: sh
 
   $ sudo ifconfig wlan0
 
@@ -147,13 +147,13 @@
 
 安装软件：
 
-::
+.. code-block:: sh
 
   $ sudo aptitude install bluetooth bluez-utils
 
 安装桌面下的蓝牙配置图形界面：
 
-::
+.. code-block:: sh
 
   $ sudo aptitude install blueman
 
@@ -175,13 +175,13 @@
 
 检查蓝牙服务状态：
 
-::
+.. code-block:: sh
 
   $ /etc/init.d/bluetooth status
 
 显示USB蓝牙模块，已确认正确安装：
 
-::
+.. code-block:: sh
 
   $ hcitool dev
   Devices:
@@ -189,7 +189,7 @@
 
 扫描蓝牙设备：
 
-::
+.. code-block:: sh
 
   $ hcitool scan
   Scanning ...
@@ -198,7 +198,7 @@
 
 记录设备的MAC地址，用下面命令和蓝牙设备配对：
 
-::
+.. code-block:: sh
 
   $ bluez-simple-agent hci0 00:0F:F6:82:D1:BB
   RequestPinCode (/org/bluez/3964/hci0/dev_00_0F_F6_82_D1_BB)
@@ -207,14 +207,35 @@
 
 信任设备以便下次自动连接：
 
-::
+.. code-block:: sh
 
   $ bluez-test-device trusted 00:0F:F6:82:D1:BB yes
+  
+或者：
+
+.. code-block:: sh
+
+  $ bt-device --set 00:0F:F6:82:D1:BB Trusted 1
 
 查看蓝牙连接：
 
-::
+.. code-block:: sh
 
   $ hcitool con
   Connections:
          < ACL 00:0F:F6:82:D1:BB handle 41 state 1 lm MASTER AUTH ENCRYPT
+
+查看注册的蓝牙设备：
+
+.. code-block:: sh
+
+  $ bt-device -l
+
+
+蓝牙音频
+
+.. code-block:: sh
+
+  $ sudo aptitude install pulseaudio pulseaudio-module-bluetooth bluez-audio pavucontrol bluez-firmware bluez-tools
+
+  bt-audio -c 00:02:3C:38:AC:B9

@@ -9,7 +9,7 @@ moc
 
 moc 是一款控制台下播放MP3的软件。
 
-::
+.. code-block:: sh
 
   $ sudo aptitude install moc
   $ mocp
@@ -32,7 +32,7 @@ omxplayer
 
 针对树莓派GPU优化的视频播放应用。
 
-::
+.. code-block:: sh
 
   $ omxplayer
 
@@ -41,7 +41,7 @@ fbi
 
 控制台下浏览图片。
 
-::
+.. code-block:: sh
 
   $ fbi -a -t 5 *.jpg
 
@@ -61,38 +61,45 @@ XBMC是一个开源的家庭多媒体中心平台。树莓派有两个以XBMC为
 
 1. 添加新的APT源：
 
-  ::
+   .. code-block:: sh
 
-    # cat > /etc/apt/sources.list.d/xbmc.list <<EOF
-    deb http://archive.mene.za.net/raspbian wheezy contrib
-    EOF
+     # cat > /etc/apt/sources.list.d/xbmc.list <<EOF
+     deb http://archive.mene.za.net/raspbian wheezy contrib
+     EOF
 
 2. 添加新的开发者公钥到APT公钥链中。
 
-   ::
+   .. code-block:: sh
 
-     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 5243CDED
+     $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 5243CDED
 
 3. 更新APT源。
 
-   ::
+   .. code-block:: sh
 
      $ sudo aptitude update
 
 4. 安装xbmc。
 
-   ::
+   .. code-block:: sh
 
      $ sudo aptitude install xbmc
 
 XBMC是独立于X Window的应用，在控制台下执行如下命令启动XBMC：
 
-::
+.. code-block:: sh
 
   $ xbmc-standalone
 
 Wayland: future desktop
 --------------------------
 
-当前树莓派的桌面还是基于X.org，没有很好地利用GPU，性能不高，也不支持桌面特效。\
-Wayland是被寄予希望的下一代桌面引擎，将会取代X.org。
+当前树莓派的桌面还是基于X.org，没有很好地利用GPU，性能不高，也缺乏桌面特效。\
+总之使用树莓派运行X Window上的桌面应用非常牵强。
+
+不过好消息是Wayland作为下一代桌面引擎，很快就会到来，当前硬件配置的树莓派就可以在Wayland上很好的工作。\
+拭目以待吧。
+
+A2DP
+-------
+

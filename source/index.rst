@@ -13,10 +13,13 @@ Raspberry Pi memo
    :numbered: 3
    :glob:
 
-   raspi-and-peripherals
+   about-raspi
    raspbian
-   hardware
+   hardware-settings
    multimedia
+   games
+   programming
+   gpio
 
 索引和表格
 ==================
