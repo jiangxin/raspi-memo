@@ -175,3 +175,10 @@ pseudoxml:
 	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
+
+all:
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) ../../doc/raspi-memo
+	@echo
+	@echo "Build finished. The HTML pages are in ../../doc/raspi-memo"
+
+
