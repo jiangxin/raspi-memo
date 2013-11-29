@@ -31,7 +31,7 @@
 * `巴黎飞屋环游记 <http://www.raspberrypi.org/archives/5201>`_\ 。
 * `PiePal：按下按钮下单订购比萨 <http://www.raspberrypi.org/archives/5256>`_\ 。
 
-树莓派外设
+树莓派接口
 ----------
 树莓派，一个裸露的电脑板，还需要一些配件才能组装成一个迷你电脑。
 
@@ -82,3 +82,70 @@ USB Hub不但可以扩展树莓派USB接口，为USB外设提供额外电力，�
 GPIO转接板等
 ++++++++++++++
 硬件开发用GPIO转接板、面包板、万用表等。
+
+树莓派固件
+-----------
+查看树莓派固件版本，命令如下：
+
+.. code-block:: sh
+
+  $ vcgencmd version
+  Nov 28 2013 21:14:32
+  Copyright (c) 2012 Broadcom
+  version 97d9a116746b859d0ccceef55b6cbd96b801f5a8 (clean) (release)
+
+命令\ ``vcgencmd``\ 的介绍参见：\ http://elinux.org/RPI_vcgencmd_usage\ 。
+主要用法如下：
+
+* 查看内存在CPU和GPU间分配：
+
+  .. code-block:: sh
+
+    root@raspberrypi:~# vcgencmd get_mem arm && vcgencmd get_mem gpu
+    arm=448M
+    gpu=64M
+
+* 查看时钟频率：
+
+  .. code-block:: sh
+
+    root@raspberrypi:~# \
+    > for src in arm core h264 isp v3d uart pwm emmc pixel vec hdmi dpi ; do \
+    >     echo -e "$src:\t$(vcgencmd measure_clock $src)" ; \
+    > done
+    arm:    frequency(45)=700000000
+    core:   frequency(1)=250000000
+    h264:   frequency(28)=0
+    isp:    frequency(42)=250000000
+    v3d:    frequency(43)=250000000
+    uart:   frequency(22)=3000000
+    pwm:    frequency(25)=0
+    emmc:   frequency(47)=100000000
+    pixel:  frequency(29)=154000000
+    vec:    frequency(10)=0
+    hdmi:   frequency(9)=163682000
+    dpi:    frequency(4)=0
+
+* 温度：查看BCM2835核心温度
+
+  .. code-block:: sh
+
+    root@raspberrypi:~# vcgencmd measure_temp
+    temp=42.8'C
+
+* 查看解码器是否开启。默认只开启H264、MPG4、MJPG。
+
+  若要开启更多解码器，访问\ `Raspberry Pi Store <http://www.raspberrypi.com>`_\ 。
+
+  .. code-block:: sh
+
+    root@raspberrypi:~# \
+    > for codec in H264 MPG2 WVC1 MPG4 MJPG WMV9 ; do \
+    >     echo -e "$codec:\t$(vcgencmd codec_enabled $codec)" ; \
+    > done
+    H264:   H264=enabled
+    MPG2:   MPG2=enabled
+    WVC1:   WVC1=enabled
+    MPG4:   MPG4=enabled
+    MJPG:   MJPG=enabled
+    WMV9:   WMV9=enabled

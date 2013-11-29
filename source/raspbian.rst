@@ -49,7 +49,7 @@ Raspberry Pi B型拥有512MB内存，以PoP工艺安装在ARM11（CPU）之上�
 
 ::
 
-  deb http://mirrordirector.raspbian.org/raspbian/ wheezy main contrib non-free rpi     
+  deb http://mirrordirector.raspbian.org/raspbian/ wheezy main contrib non-free rpi
 
 将其更改为国内的镜像源，如下：
 
@@ -66,6 +66,14 @@ Raspberry Pi B型拥有512MB内存，以PoP工艺安装在ARM11（CPU）之上�
 
 更新树莓派固件
 ----------------
+查看当前固件版本，使用命令：
+
+.. code-block:: sh
+
+  $ vcgencmd version
+  Nov 28 2013 21:14:32
+  Copyright (c) 2012 Broadcom
+  version 97d9a116746b859d0ccceef55b6cbd96b801f5a8 (clean) (release)
 
 升级树莓派固件，使用命令：
 
